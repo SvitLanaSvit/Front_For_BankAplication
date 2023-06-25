@@ -1,0 +1,17 @@
+.required {
+  color: red;
+  margin-left: 5px;
+}
+
+.error-message {
+  color: red;
+  /* margin-top: 5px; */
+}
+
+.flex_container{
+  display: flex;
+}
+
+.flex_container>div{
+  margin-left: 5px;
+}

@@ -1,0 +1,74 @@
+<div class="container">
+  <h4>CREATE NEW AGREEMENT</h4>
+  <div class="row w-25">
+    <input type="hidden" [(ngModel)]="agreement.id" class="form-control">
+    <div class="mb-3">
+      <div class="flex_container">
+        <label class="form-label" for="interestRate">Interest rate<span class="required">*</span>:</label>
+        <div *ngIf="submitted && !agreement.interestRate" class="error-message">Interest rate is required</div>
+      </div>
+      <input type="number" [(ngModel)]="agreement.interestRate" min="0" class="form-control" required="true">
+    </div>
+    <div class="mb-3">
+      <div class="flex_container">
+        <label class="form-label" for="status">Status<span class="required">*</span>:</label>
+        <div *ngIf="submitted && !agreement.status" class="error-message">Status is required</div>
+      </div>
+      <select name="status" id="status" [(ngModel)]="agreement.status" class="form-select" required="true">
+        <option value="{{status}}" *ngFor="let status of agreementStatusOptions">{{status}}</option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <div class="flex_container">
+        <label class="form-label" for="sum">Summe<span class="required">*</span>:</label>
+        <div *ngIf="submitted && !agreement.sum" class="error-message">Summe is required</div>
+      </div>
+      <input type="number" [(ngModel)]="agreement.sum" min="0" class="form-control" required>
+    </div>
+    <div class="mb-3">
+      <div class="flex_container">
+        <label class="form-label" for="productId">Product id<span class="required">*</span>:</label>
+        <div *ngIf="submitted && !agreement.productId" class="error-message">Product id is required</div>
+      </div>
+      <select name="productId" id="productId" [(ngModel)]="agreement.productId" class="form-select" required="true">
+        <option value="{{productId}}" *ngFor="let productId of productsId">{{productId}}</option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <div class="flex_container">
+        <label class="form-label" for="accountId">Account id<span class="required">*</span>:</label>
+        <div *ngIf="submitted && !agreement.accountId" class="error-message">Account id is required</div>
+      </div>
+      <select name="accountId" id="accountId" [(ngModel)]="agreement.accountId" class="form-select" required="true">
+        <option value="{{accountId}}" *ngFor="let accountId of accountsId">{{accountId}}</option>
+      </select>
+    </div>
+    <div class="btn-group">
+      <button (click)="submit()" class="btn btn-sm btn-primary">Save</button>
+      <button (click)="clear()" class="btn btn-sm btn-secondary">Clear</button>
+    </div>
+  </div>
+  <hr>
+  <div *ngIf="done">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Interest rate:</th>
+          <th>Status:</th>
+          <th>Summe:</th>
+          <th>Product id:</th>
+          <th>Account id:</th>
+      </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{agreement.interestRate}}</td>
+          <td>{{agreement.status}}</td>
+          <td>{{agreement.sum}}</td>
+          <td>{{agreement.productId}}</td>
+          <td>{{agreement.accountId}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

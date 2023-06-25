@@ -1,0 +1,83 @@
+<div class="container">
+  <h4>CREATE NEW PRODUCT</h4>
+  <div class="row w-25">
+    <input type="hidden" [(ngModel)]="product.id" class="form-control">
+    <div class="mb-3">
+      <div class="flex_container">
+        <label class="form-label" for="name">Name<span class="required">*</span>:</label>
+        <div *ngIf="submitted && !product.name" class="error-message">Product`s name is required</div>
+      </div>
+      <input type="text" [(ngModel)]="product.name" class="form-control">
+    </div>
+    <div class="mb-3">
+      <div class="flex_container">
+        <label class="form-label" for="status">Status<span class="required">*</span>:</label>
+        <div *ngIf="submitted && !product.status" class="error-message">Product`s status is required</div>
+      </div>
+      <select name="status" id="status" [(ngModel)]="product.status" class="form-select">
+        <option value="{{status}}" *ngFor="let status of productStatusOptions">{{status}}</option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <div class="flex_container">
+        <label class="form-label" for="currencyCode">Currency<span class="required">*</span>:</label>
+        <div *ngIf="submitted && !product.currencyCode" class="error-message">Currency is required</div>
+      </div>
+      <select name="currencyCode" id="currencyCode" [(ngModel)]="product.currencyCode" class="form-select">
+        <option value="{{currencyCode}}" *ngFor="let currencyCode of productCurrencyCodeOptions">{{currencyCode}}</option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <div class="flex_container">
+        <label class="form-label" for="interestRate">Interest rate<span class="required">*</span>:</label>
+        <div *ngIf="submitted && !product.interestRate" class="error-message">Interest rate is required</div>
+      </div>
+      <input type="number" [(ngModel)]="product.interestRate" class="form-control">
+    </div>
+    <div class="mb-3">
+      <div class="flex_container">
+        <label class="form-label" for="productLimit">Limit<span class="required">*</span>:</label>
+        <div *ngIf="submitted && !product.productLimit" class="error-message">Limit is required</div>
+      </div>
+      <input type="number" [(ngModel)]="product.productLimit" class="form-control">
+    </div>
+    <div class="mb-3">
+      <div class="flex_container">
+        <label class="form-label" for="managerId">Manager id<span class="required">*</span>:</label>
+        <div *ngIf="submitted && !product.managerId" class="error-message">Manager id is required</div>
+      </div>
+      <select name="managerId" id="clientId" [(ngModel)]="product.managerId" class="form-select">
+        <option value="{{managerId}}" *ngFor="let managerId of managersId">{{managerId}}</option>
+      </select>
+    </div>
+    <div class="btn-group">
+      <button (click)="submit()" class="btn btn-sm btn-primary">Save</button>
+      <button (click)="clear()" class="btn btn-sm btn-secondary">Clear</button>
+    </div>
+  </div>
+  <hr>
+  <div *ngIf="done">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Name:</th>
+          <th>Status:</th>
+          <th>Currency code:</th>
+          <th>Interest rate:</th>
+          <th>Product Limit:</th>
+          <th>Manager id:</th>
+      </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{product.name}}</td>
+          <td>{{product.status}}</td>
+          <td>{{product.currencyCode}}</td>
+          <td>{{product.interestRate}}</td>
+          <td>{{product.productLimit}}</td>
+          <td>{{product.managerId}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,35 @@
+<div class="container">
+  <h4>LIST OF AGREEMENTS BY CLIENT ID</h4>
+  <div class="row w-25">
+    <div class="mb-3">
+      <div class="flex_container">
+        <label class="form-label" for="clientId">Client id<span class="required">*</span>:</label>
+        <div *ngIf="submitted && !clientId" class="error-message">Client id is required</div>
+      </div>
+      <select name="clientId" id="clientId" [(ngModel)]="clientId" class="form-select">
+        <option value="{{clientId}}" *ngFor="let clientId of clientsId">{{clientId}}</option>
+      </select>
+    </div>
+    <div class="btn-group">
+      <button (click)="submit()" class="btn btn-sm btn-primary">Show</button>
+      <button (click)="clear()" class="btn btn-sm btn-secondary">Clear</button>
+    </div>
+  </div>
+  <hr>
+  <div *ngIf="done">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Agreement id:</th>
+      </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of agreements">
+            <td>{{item.id}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+

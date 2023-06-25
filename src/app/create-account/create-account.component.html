@@ -1,0 +1,86 @@
+<div class="container">
+  <h4>CREATE NEW ACCOUNT</h4>
+  <div class="row w-25">
+    <input type="hidden" [(ngModel)]="account.id" class="form-control">
+    <div class="mb-3">
+      <div class="flex_container">
+        <label class="form-label" for="name">Name<span class="required">*</span>:</label>
+        <div *ngIf="submitted && !account.name" class="error-message">Name is required</div>
+      </div>
+      <input type="text" [(ngModel)]="account.name" class="form-control">
+    </div>
+    <div class="mb-3">
+      <div class="flex_container">
+        <label class="form-label" for="type">Type<span class="required">*</span>:</label>
+        <div *ngIf="submitted && !account.type" class="error-message">Type is required</div>
+      </div>
+      <select name="type" id="type" [(ngModel)]="account.type" class="form-select">
+        <option value="{{type}}" *ngFor="let type of accountTypeOptions">{{type}}</option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <div class="flex_container">
+        <label class="form-label" for="status">Status<span class="required">*</span>:</label>
+        <div *ngIf="submitted && !account.status" class="error-message">Status is required</div>
+      </div>
+      <select name="status" id="status" [(ngModel)]="account.status" class="form-select">
+        <option value="{{status}}" *ngFor="let status of accountStatusOptions">{{status}}</option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <div class="flex_container">
+        <label class="form-label" for="balance">Balance<span class="required">*</span>:</label>
+        <div *ngIf="submitted && !account.balance" class="error-message">Balance is required</div>
+      </div>
+      <input type="text" [(ngModel)]="account.balance" class="form-control">
+    </div>
+    <div class="mb-3">
+      <div class="flex_container">
+        <label class="form-label" for="currencyCode">Currency code<span class="required">*</span>:</label>
+        <div *ngIf="submitted && !account.currencyCode" class="error-message">Currency code is required</div>
+      </div>
+      <select name="currencyCode" id="currencyCode" [(ngModel)]="account.currencyCode" class="form-select">
+        <option value="{{code}}" *ngFor="let code of currencyCodeOptions">{{code}}</option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <div class="flex_container">
+        <label class="form-label" for="clientId">Client id<span class="required">*</span>:</label>
+        <div *ngIf="submitted && !account.clientId" class="error-message">Client id is required</div>
+      </div>
+      <select name="clientId" id="clientId" [(ngModel)]="account.clientId" class="form-select">
+        <option value="{{clientId}}" *ngFor="let clientId of clientsId">{{clientId}}</option>
+      </select>
+    </div>
+    <div class="btn-group">
+      <button (click)="submit()" class="btn btn-sm btn-primary">Save</button>
+      <button (click)="clear()" class="btn btn-sm btn-secondary">Clear</button>
+    </div>
+  </div>
+  <hr>
+  <div *ngIf="done">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Name:</th>
+          <th>Type:</th>
+          <th>Status:</th>
+          <th>Balance:</th>
+          <th>Currency:</th>
+          <th>Client id:</th>
+      </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{account.name}}</td>
+          <td>{{account.type}}</td>
+          <td>{{account.status}}</td>
+          <td>{{account.balance}}</td>
+          <td>{{account.currencyCode}}</td>
+          <td>{{account.clientId}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+

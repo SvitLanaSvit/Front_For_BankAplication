@@ -1,1 +1,36 @@
 /* You can add global styles to this file, and also import other style files */
+.container{
+  margin-top: 20px;
+}
+
+body{
+  background-color: transparent;
+}
+
+html{
+  background-image: url('../src/assets/back.jpg');
+  background-size: cover;
+  background-repeat: repeat;
+  background-position: center center;
+  height: 100%;
+}
+
+.required {
+  color: red;
+  margin-left: 5px;
+}
+
+.error-message {
+  color: red;
+  /* margin-top: 5px; */
+}
+
+.flex_container{
+  display: flex;
+}
+
+.flex_container>div{
+  margin-left: 5px;
+}
+
+@import "~bootstrap/dist/css/bootstrap.min.css"

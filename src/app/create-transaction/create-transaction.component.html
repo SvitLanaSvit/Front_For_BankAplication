@@ -1,0 +1,75 @@
+<div class="container">
+  <h4>CREATE NEW TRANSACTION</h4>
+  <div class="row w-25">
+    <input type="hidden" [(ngModel)]="transaction.id" class="form-control">
+    <div class="mb-3">
+      <div class="flex_container">
+        <label class="form-label" for="type">Type<span class="required">*</span>:</label>
+        <div *ngIf="submitted && !transaction.type" class="error-message">Type is required</div>
+      </div>
+      <select name="type" id="type" [(ngModel)]="transaction.type" class="form-select">
+        <option value="{{type}}" *ngFor="let type of transactionTypeOptions">{{type}}</option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <div class="flex_container">
+        <label class="form-label" for="amount">Amount<span class="required">*</span>:</label>
+        <div *ngIf="submitted && !transaction.amount" class="error-message">Amount is required</div>
+      </div>
+      <input type="number" [(ngModel)]="transaction.amount" class="form-control">
+    </div>
+    <div class="mb-3">
+      <div class="flex_container">
+        <label class="form-label" for="description">Description<span class="required">*</span>:</label>
+        <div *ngIf="submitted && !transaction.description" class="error-message">Description is required</div>
+      </div>
+      <input type="text" [(ngModel)]="transaction.description" class="form-control">
+    </div>
+    <div class="mb-3">
+      <div class="flex_container">
+        <label class="form-label" for="debitAccountId">Debit account id<span class="required">*</span>:</label>
+        <div *ngIf="submitted && !transaction.debitAccountId" class="error-message">Debit account id is required</div>
+      </div>
+      <select name="debitAccountId" id="debitAccountId" [(ngModel)]="transaction.debitAccountId" class="form-select">
+        <option value="{{debitAccountId}}" *ngFor="let debitAccountId of debitAccountsId">{{debitAccountId}}</option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <div class="flex_container">
+        <label class="form-label" for="creditAccountId">Credit account id<span class="required">*</span>:</label>
+        <div *ngIf="submitted && !transaction.creditAccountId" class="error-message">Credit account id is required</div>
+      </div>
+      <select name="creditAccountId" id="creditAccountId" [(ngModel)]="transaction.creditAccountId" class="form-select">
+        <option value="{{creditAccountId}}" *ngFor="let creditAccountId of creditAccountsId">{{creditAccountId}}</option>
+      </select>
+    </div>
+    <div class="btn-group">
+      <button (click)="submit()" class="btn btn-sm btn-primary">Save</button>
+      <button (click)="clear()" class="btn btn-sm btn-secondary">Clear</button>
+    </div>
+  </div>
+  <hr>
+  <div *ngIf="done">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Type:</th>
+          <th>Amount:</th>
+          <th>Description:</th>
+          <th>Debit account:</th>
+          <th>Credit account:</th>
+      </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{transaction.type}}</td>
+          <td>{{transaction.amount}}</td>
+          <td>{{transaction.description}}</td>
+          <td>{{transaction.debitAccountId}}</td>
+          <td>{{transaction.creditAccountId}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
